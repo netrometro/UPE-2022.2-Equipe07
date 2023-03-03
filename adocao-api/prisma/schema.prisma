@@ -9,3 +9,22 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Usuario {
+  id        String   @id @default(uuid())
+  nome      String
+  descricao String?
+  email     String   @unique
+  senha     String
+  criacao   DateTime
+  estado    STATUS
+
+  @@map("usuarios")
+}
+
+enum STATUS {
+  ATIVO
+  ANALISE
+  SUSPENSO
+  BANIDO
+}
