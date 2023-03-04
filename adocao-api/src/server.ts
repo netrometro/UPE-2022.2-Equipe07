@@ -14,13 +14,20 @@ app.listen(3333, () => {
 //Acesso ao perfil do animal
 app.get('/perfilanimal', 
     async (req, res)=>{
-        
-
-
-        return res.send("Aqui tem acesso ao perfil do animal");
+        return res.send("Aqui tem acesso ao perfil do animal! Faltou mandar o id do cachorro");
     }
 );
+app.get('/perfilanimal/:id', 
+    async (req, res) => {
+        const id = parseInt(req.params.id);
+        const cachorro_encotrado = await prisma.animal.findUnique({
+            where: {
+                id: id
+            }
+        });
 
+    return res.status(201).json({ data: cachorro_encotrado });
+});
 
 //->Cadastro de um novo animal
 //acesso ao formulario
@@ -53,4 +60,5 @@ app.post('/animal/new/p',
         return res.status(201).json({ data: animal }); //esse status 201 é um codigo HTTP para um create
     }
 );
+
 
