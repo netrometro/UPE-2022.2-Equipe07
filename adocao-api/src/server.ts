@@ -21,9 +21,9 @@ app.get('/perfilanimal',
 app.get('/perfilanimal/:id', 
     async (req, res) => {
         const id = parseInt(req.params.id);
-        const cachorro_encotrado = await prisma.animal.findUnique({
+        const cachorro_encotrado = await prisma.animal.findFirst({
             where: {
-                id: id
+                id: Number(id)
             }
         });
 

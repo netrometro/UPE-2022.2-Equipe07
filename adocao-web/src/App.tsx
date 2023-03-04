@@ -5,7 +5,7 @@ import CadastroNovoAnimal from './Componentes/CadastroNovoAnimal';
 function App() {
   return (
     <>
-      <PerfilAnimal />
+      <PerfilAnimal id={1}/>
       {/* <CadastroNovoAnimal/> */}
     </>
   );
