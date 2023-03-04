@@ -9,3 +9,33 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+
+
+//--Meus Modelos Prisma--
+
+// Modelo para as fotos
+model Foto {
+  id         Int      @id @default(autoincrement())
+  url        String?
+  animalId   Int
+  animal     Animal   @relation(fields: [animalId], references: [id])
+
+  @@map("fotos")
+}
+
+// Modelo para o animal
+model Animal {
+  id                     Int  @id @default(autoincrement())
+  id_dono                Int  //Esse field aqui tem que ser ligado com o BD de Amadeu, ja que ele ta fazendo o login do usuario
+  nome                   String   
+  raca                   String
+  genero                 String?
+  idade                  Int?
+  personalidade          String?
+  necessidadesMedicas    String?
+  necessidadesComportamentais String?
+  fotos                  Foto[]
+
+  @@map("animais")
+}

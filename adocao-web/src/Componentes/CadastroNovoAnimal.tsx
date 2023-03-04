@@ -17,6 +17,9 @@ const CadastroNovoAnimal = () => {
                 <label htmlFor="idade">Idade:</label>
                 <input type="number" id="idade" name="idade" required/>
                 <br/>
+                <label htmlFor="genero">Genero:</label>
+                <input type="text" id="genero" name="genero" required/>
+                <br/>
                 <br/>
                 <label htmlFor="personalidade">Personalidade:</label>
                 <textarea id="personalidade" name="personalidade" ></textarea>
