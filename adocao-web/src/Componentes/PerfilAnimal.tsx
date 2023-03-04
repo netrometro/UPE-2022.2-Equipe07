@@ -4,12 +4,7 @@ import './PerfilAnimal.css'
 const PerfilAnimal = () =>{
     return(
         <>
-        <fieldset className="Filed-set-01">
-            <fieldset>
-                <div className="Cabecalho do site">
-                    <p>Adocao Logo</p>
-                </div>
-            </fieldset>
+        <fieldset className="FiledSet-envolve-tudo">
             <fieldset>
                 <div className="Corpo do site">
                 <div className="dog-Perfil">
@@ -52,11 +47,6 @@ const PerfilAnimal = () =>{
                         <button type="button" name="Favotirar" className="Favoritar">Favoritar</button>
                         <button type="button" name="voltar" className="Favoritar">Voltar</button>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="Roda pe do site">
-                    <p>Roda pe do site</p>
                 </div>
             </fieldset>
         </fieldset>
