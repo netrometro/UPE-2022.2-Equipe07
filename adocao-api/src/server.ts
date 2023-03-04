@@ -11,12 +11,13 @@ app.listen(3333, () => {
     }
 );
 
-//Acesso ao perfil do animal
+//-->Acesso ao perfil do animal
 app.get('/perfilanimal', 
     async (req, res)=>{
         return res.send("Aqui tem acesso ao perfil do animal! Faltou mandar o id do cachorro");
     }
 );
+//Acesso ao Perfil do Animal atraves de um parametro ID na URL
 app.get('/perfilanimal/:id', 
     async (req, res) => {
         const id = parseInt(req.params.id);
@@ -26,8 +27,10 @@ app.get('/perfilanimal/:id',
             }
         });
 
-    return res.status(201).json({ data: cachorro_encotrado });
+    return res.status(302).json({ data: cachorro_encotrado }); //esse status 302 é o Status FOUND no http
 });
+
+
 
 //->Cadastro de um novo animal
 //acesso ao formulario
