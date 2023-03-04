@@ -1,6 +1,79 @@
 import './PerfilAnimal.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
+//funcao nova que vou fazer 
+function PerfilAnimal({ id }: { id: any }) {
+    const [cachorro, setCachorro] = useState(null);
 
+    useEffect(() => {
+        axios.get(`http://localhost:3000/perfilanimal/${id}`).then(
+            res => {
+                setCachorro(res.data);
+                });
+        }, 
+        [id]
+    );
+
+    if (!cachorro) {
+        return <p>Carregando...</p>;
+    }else{
+        return (
+            <>
+                <fieldset className="FiledSet-envolve-tudo">
+                    <fieldset>
+                        <div className="Corpo do site">
+                        <div className="dog-Perfil">
+                            <div className="perfil-header">
+                                <h2 className="dog-nome">Nome: {cachorro}</h2>
+                                <h3 className="dog-raca">Raça: {cachorro}</h3>
+                                <h3 className="dog-dono">Dono: Antonio</h3>
+                            </div>
+                            <div className="dog-perfil-info">
+                                <div className="dog-perfil-idade">
+                                    <h3>Idade</h3>
+                                    <p>4 anos</p>
+                                </div>
+                                <div className="dog-personalidade">
+                                    <h3>Personalidade</h3>
+                                    <p>Amigavel</p>
+                                </div>
+                                <div className="dog-condiçoes-medicas">
+                                    <h3>Necessidades Medicas</h3>
+                                    <p>null</p>
+                                </div>
+                                <div className="dog-comportamento">
+                                    <h3>Necessidades Comportamentais</h3>
+                                    <p>Precisa brincar bastante</p>
+                                </div>
+                            </div>
+                            <div className="dog-fotos">
+                                <h3>Fotos</h3>
+                                    <div className="dog-fotos-container">
+                                        <img src="" alt="imagem 1" />
+                                        <img src="" alt="imagem 2" />
+                                        <img src="" alt="imagem 3" />
+                                        <img src="" alt="imagem 4" />
+                                        <img src="" alt="imagem 5" />
+                                    </div>
+                            </div>
+                            </div>
+                            <br/>
+                            <div className="botoes">
+                                <button type="button" name="Favotirar" className="Favoritar">Favoritar</button>
+                                <button type="button" name="voltar" className="Favoritar">Voltar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </fieldset>
+            </>
+          );
+    }
+    
+}
+
+/*
+//funcao original que esta funcionando
 const PerfilAnimal = () =>{
     return(
         <>
@@ -53,5 +126,6 @@ const PerfilAnimal = () =>{
         </>
     );
 }
+*/
 
 export default PerfilAnimal;
