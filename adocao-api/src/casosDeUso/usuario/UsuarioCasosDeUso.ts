@@ -12,19 +12,19 @@ export class UsuarioCasosDeUso {
 
     async cadastrar({ nome, descricao, email, senha }: CadastratoUsuario) {
 
-        const validacaoEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+        const validacaoEmail = /^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$/;
 
-        const emailValido = validacaoEmail.exec(email);
+        const emailValido = validacaoEmail.test(email);
         if (!emailValido) {
-            throw new Error("Email inválido!")
+            throw new Error("Email inválido!");
         }
 
         if (nome.length < 3) {
-            throw new Error("Nome curto!")
+            throw new Error("Nome curto!");
         }
 
         if (senha.length < 8) {
-            throw new Error("Senha curto!")
+            throw new Error("Senha curto!");
         }
 
         const usuarioExistente = await client.usuario.findFirst({
@@ -34,7 +34,7 @@ export class UsuarioCasosDeUso {
         });
 
         if (usuarioExistente) {
-            throw new Error("Email já cadastrado por outro usaurio!")
+            throw new Error("Email já cadastrado por outro usuário!");
         }
 
         const senhaHash = await hash(senha, 8);
