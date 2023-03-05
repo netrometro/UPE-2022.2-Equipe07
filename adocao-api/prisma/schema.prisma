@@ -18,6 +18,7 @@ model Usuario {
   senha     String
   criacao   DateTime
   estado    STATUS
+  recuperacoes Recuperacao[] 
 
   @@map("usuarios")
 }
@@ -27,4 +28,14 @@ enum STATUS {
   ANALISE
   SUSPENSO
   BANIDO
+}
+
+model Recuperacao {
+  id String @id @default(uuid())
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId String
+  token String?
+  criacao DateTime @default(now())
+
+  @@map("recuperacoes")
 }
