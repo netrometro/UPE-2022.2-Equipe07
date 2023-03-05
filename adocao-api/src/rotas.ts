@@ -1,13 +1,14 @@
 import { Router } from "express";
-import { UsuarioCasosDeUso } from "./casosDeUso/usuario/UsuarioCasosDeUso";
+import { AutenticacaoControle } from "./casosDeUso/autenticacao/AutenticacaoControle";
 import { UsuarioControle } from "./casosDeUso/usuario/UsuarioControle";
 
 const rotas = Router();
 
-const usuarioCasosDeUso = new UsuarioCasosDeUso();
 const usuarioControle = new UsuarioControle();
-
 rotas.post("/usuarios/cadastro", usuarioControle.cadastrarUsuario);
+
+const autenticacaoControle = new AutenticacaoControle();
+rotas.post("/autenticacao", autenticacaoControle.autenticarUsuario);
 
 
 export{ rotas };
