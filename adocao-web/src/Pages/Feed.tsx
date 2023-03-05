@@ -23,7 +23,7 @@ export default function Feed() {
             </Link>
             <br/>
             <br/>
-            <Link to={"/cadastroNovoAnimal"}>
+            <Link to={"/animal/new"}>
                 <button>Ir para Cadastro</button>
             </Link>
             <br/>

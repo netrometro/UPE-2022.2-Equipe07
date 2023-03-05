@@ -7,7 +7,9 @@ const CadastroNovoAnimal = () => {
 
     const { register , handleSubmit } = useForm();
 
-    const onsubmit = (dataa: any) => axios.post('http://localhost:3333/animal/new/p');
+    const onsubmit = (dataa: any) => axios.post('http://localhost:3333/animal/new/p', dataa)
+    .then(()=>{console.log(dataa)})
+    .catch(()=>{console.log("Deu ERRADO")})
 
     return (
         <>
