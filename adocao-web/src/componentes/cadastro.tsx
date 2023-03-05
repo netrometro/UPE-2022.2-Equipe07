@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Cadastro() {
   const [nome, setNome] = useState("");
@@ -7,6 +8,7 @@ export function Cadastro() {
   const [senha, setSenha] = useState("");
   const [senhaRepeticao, setSenhaRepeticao] = useState("");
   const validacaoEmail = /^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$/;
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -14,7 +16,7 @@ export function Cadastro() {
         <h1>Cadastro</h1>
         <span>
           Já tem conta?
-          <button type="button" onClick={() => console.log("Login")}>
+          <button type="button" onClick={() => navigate("/")}>
             Login
           </button>
         </span>

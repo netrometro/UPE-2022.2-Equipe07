@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 
 export function Login() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const validacaoEmail = /^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$/;
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -12,7 +14,7 @@ export function Login() {
         <h1>Login</h1>
         <span>
           Não tem uma conta?
-          <button type="button" onClick={() => console.log("Cadastro")}>
+          <button type="button" onClick={() => navigate("cadastro")}>
             Crie Agora
           </button>
         </span>
