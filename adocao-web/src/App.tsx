@@ -1,13 +1,11 @@
-import PerfilAnimal from './Componentes/PerfilAnimal';
 import './App.css';
-import CadastroNovoAnimal from './Componentes/CadastroNovoAnimal';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <PerfilAnimal id={1}/>
-      {/* <CadastroNovoAnimal/> */}
-    </>
+    <Router>
+      <Route />
+    </Router>
   );
 }
 
