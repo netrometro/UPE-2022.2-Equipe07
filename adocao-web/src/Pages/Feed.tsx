@@ -23,6 +23,16 @@ export default function Feed() {
             </Link>
             <br/>
             <br/>
+            <Link to={"/cadastroNovoAnimal"}>
+                <button>Ir para Cadastro</button>
+            </Link>
+            <br/>
+            <br/>
+            <Link to={"/perfilAnimal"}>
+                <button>Ir para Perfil animal</button>
+            </Link>
+            <br/>
+            <br/>
         </div>
         </>
     );

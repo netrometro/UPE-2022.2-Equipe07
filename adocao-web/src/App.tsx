@@ -17,8 +17,8 @@ function App() {
         <Route path='/post' element={ <Post /> } />
         <Route path='/show' element={<Show />} />
         <Route path='/Edit' element={<Edit />} />
-        <Route path='/cadastroNovoAnimal' element={<CadastroNovoAnimal />} />
-        {/* <Route path='/perfilAnimal' element={<PerfilAnimal />} /> */} 
+        <Route path='/animal/new' element={<CadastroNovoAnimal />} />
+        {/* <Route path='/perfilanimal/:id' element={<PerfilAnimal />} /> */} 
       </Routes>
     </div>
     </>
