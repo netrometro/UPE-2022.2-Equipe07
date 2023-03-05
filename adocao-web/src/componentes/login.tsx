@@ -1,4 +1,5 @@
-import { useState } from "react";
+import Cookies from "js-cookie";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { validacaoEmail } from "../lib/validacaoDeEmail";
 
@@ -7,6 +8,14 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
+
+  async function Logar(event: FormEvent) {
+    event.preventDefault();
+    
+    const token = "12345678"
+    Cookies.remove("token");
+    Cookies.set("token", token, {expires: 1});
+  }
 
   return (
     <div>
@@ -18,7 +27,7 @@ export function Login() {
             Crie Agora
           </button>
         </span>
-        <form onSubmit={() => console.log("Submicao")}>
+        <form onSubmit={(event) => Logar(event)}>
 
           <span>Email</span>
           <input

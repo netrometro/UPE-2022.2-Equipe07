@@ -1,7 +1,7 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Cadastro } from './componentes/cadastro';
+import { InsercaoDeNovaSenha } from './componentes/insercaoDeNovaSenha';
 import { Login } from './componentes/login';
 import { RecuperacaoDeConta } from './componentes/recuperacaoDeConta';
 
@@ -12,6 +12,7 @@ function App() {
         <Route index element={<Login/>}/>
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/recuperacao" element={<RecuperacaoDeConta />} />
+        <Route path="/seguranca" element={<InsercaoDeNovaSenha />} />
       </Routes>
     </div>
   );

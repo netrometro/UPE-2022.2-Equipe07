@@ -10,7 +10,7 @@ export function InsercaoDeEmail({ setEnvio }: InsercaoDeEmailProps) {
     
     return (
       // function forar
-        <form onSubmit={(event) => {event.preventDefault(); setEnvio(false)}}>
+        <form onSubmit={(event) => {event.preventDefault(); setEnvio(true)}}>
           
             <span>Email</span>
           <input
