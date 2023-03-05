@@ -18,7 +18,7 @@ function App() {
         <Route path='/show' element={<Show />} />
         <Route path='/Edit' element={<Edit />} />
         <Route path='/animal/new' element={<CadastroNovoAnimal />} />
-        {/* <Route path='/perfilanimal/:id' element={<PerfilAnimal />} /> */} 
+        <Route path='/perfilanimal' element={<PerfilAnimal />} /> 
       </Routes>
     </div>
     </>
