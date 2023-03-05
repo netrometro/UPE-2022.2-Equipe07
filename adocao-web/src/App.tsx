@@ -1,16 +1,23 @@
 import './App.css';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Post from './Pages/Post';
 import Show from './Pages/Show';
 import Edit from './Pages/Edit';
+import Feed from './Pages/Feed';
+
 
 function App() {
   return (
-    <Router>
-      <Route path='/post' element={<Post />} />
-      <Route path='/show' element={<Show />} />
-      <Route path='/Edit' element={<Edit />} />
-    </Router>
+    <>
+    <div className='App'>
+      <Routes>
+        <Route path='/' element={ <Feed /> } />
+        <Route path='/post' element={ <Post /> } />
+        <Route path='/show' element={<Show />} />
+        <Route path='/Edit' element={<Edit />} />
+      </Routes>
+    </div>
+    </>
   );
 }
 

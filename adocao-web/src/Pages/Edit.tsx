@@ -4,7 +4,9 @@ import React from 'react';
 const Edit = () => {
     return (
         <>
-        <h1>Page Post</h1>
+        <div>
+            <h1>Page edit!!!!</h1>
+        </div>
         </>
     );
 };
