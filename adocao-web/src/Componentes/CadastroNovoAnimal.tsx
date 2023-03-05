@@ -1,12 +1,13 @@
 import "./CadastroNovoAnimal.css"
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 
 const CadastroNovoAnimal = () => {
 
     const { register , handleSubmit } = useForm();
 
-    const onsubmit = (dataa: any) => console.log(dataa);
+    const onsubmit = (dataa: any) => axios.post('http://localhost:3333/animal/new/p');
 
     return (
         <>
