@@ -6,8 +6,10 @@ function PerfilAnimal() {
     
     useEffect(()=>{
         axios.get("http://localhost:3333/perfilanimal")
-        .then(()=>{console.log("certo")})
-        .catch(()=>{console.log("errado")})
+        .then((response)=>{
+            console.log(response.data)
+        })
+        .catch(()=>{console.log("Deu errado na hora de carregar dados do PPrisma")})
     },
     [])
     
