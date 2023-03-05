@@ -11,6 +11,18 @@ export default function Feed() {
             <Link to={"/post"}>
                 <button>Ir para POST</button>
             </Link>
+            <br/>
+            <br/>
+            <Link to={"/edit"}>
+                <button>Ir para EDIT</button>
+            </Link>
+            <br/>
+            <br/>
+            <Link to={"/show"}>
+                <button>Ir para SHOW</button>
+            </Link>
+            <br/>
+            <br/>
         </div>
         </>
     );

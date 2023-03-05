@@ -4,6 +4,8 @@ import Post from './Pages/Post';
 import Show from './Pages/Show';
 import Edit from './Pages/Edit';
 import Feed from './Pages/Feed';
+import CadastroNovoAnimal from './Componentes/CadastroNovoAnimal';
+import PerfilAnimal from './Componentes/PerfilAnimal';
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route path='/post' element={ <Post /> } />
         <Route path='/show' element={<Show />} />
         <Route path='/Edit' element={<Edit />} />
+        <Route path='/cadastroNovoAnimal' element={<CadastroNovoAnimal />} />
+        {/* <Route path='/perfilAnimal' element={<PerfilAnimal />} /> */} 
       </Routes>
     </div>
     </>

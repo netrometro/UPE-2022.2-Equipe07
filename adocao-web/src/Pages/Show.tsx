@@ -1,10 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Show = () => {
     return (
         <>
-        <h1>Page SHow</h1>
+        <div>
+            <h1>Page Show!!!!</h1>
+            <Link to={"/"}>
+                <button>Voltar Feed</button>
+            </Link>
+        </div>
         </>
     );
 };

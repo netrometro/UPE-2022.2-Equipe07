@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Edit = () => {
@@ -6,6 +7,9 @@ const Edit = () => {
         <>
         <div>
             <h1>Page edit!!!!</h1>
+            <Link to={"/"}>
+                <button>Voltar Feed</button>
+            </Link>
         </div>
         </>
     );
