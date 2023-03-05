@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { validacaoEmail } from "../lib/validacaoDeEmail";
 
 export function Login() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const validacaoEmail = /^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$/;
   const navigate = useNavigate();
 
   return (
