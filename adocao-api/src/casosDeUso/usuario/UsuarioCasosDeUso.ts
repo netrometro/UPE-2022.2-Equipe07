@@ -1,11 +1,17 @@
 import { hash } from "bcryptjs";
 import { client } from "../../prisma/client";
+import { indentificarAutorToken } from "../../provedores/indentificarAutorToken";
 
 interface CadastratoUsuario {
     nome: string;
     descricao: string | null;
     email: string;
     senha: string;
+}
+
+interface AtualizarSenhaProps {
+    token: string;
+    novaSenha: string;
 }
 
 export class UsuarioCasosDeUso {
@@ -49,6 +55,34 @@ export class UsuarioCasosDeUso {
                 email,
                 criacao: new Date(),
                 estado: "ATIVO"
+            }
+        });
+    }
+
+    async atualizarSenha({token, novaSenha}: AtualizarSenhaProps) {
+        const id = await indentificarAutorToken(token);
+        if (!id) {
+            throw new Error("Token inválido!");
+        }
+        
+        const usuarioExistente = await client.usuario.findFirst({
+            where: {
+                id:id.toString()
+            }
+        });
+
+        if (!usuarioExistente) {
+            throw new Error("Token inválido!");
+        }
+
+        const senhaHash = await hash(novaSenha, 8);
+
+        await client.usuario.update({
+            where: {
+                id:id.toString()
+            },
+            data: {
+                senha: senhaHash
             }
         });
     }

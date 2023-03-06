@@ -3,6 +3,7 @@ import { verify } from "jsonwebtoken";
 import { client } from "../../prisma/client";
 import { EnviarEmail } from "../../provedores/envioDeEmail";
 import { GeradorDeTokenProvedor } from "../../provedores/geradorDeToken";
+import { indentificarAutorToken } from "../../provedores/indentificarAutorToken";
 
 interface AutenticacaoUsuario {
     email: string;
@@ -69,8 +70,10 @@ export class AutenticacaoCasosDeUso {
     }
 
     async verificarTokenDeRecuperacao({ tokenDeRecuperacao }: VerificarTokenDeRecuperacaoProps) {
-        try {
-            const decoded = await verify(tokenDeRecuperacao, "aa0aae8f-505d-408f-83a5-c71cebc1349b");
+            const decoded = await indentificarAutorToken(tokenDeRecuperacao);
+            if (!decoded) {
+                throw new Error("Token inválido!");
+            }
             const geradorDeToken = new GeradorDeTokenProvedor();
             const token = await geradorDeToken.gerar(decoded.toString());
             client.recuperacao.update({
@@ -83,11 +86,6 @@ export class AutenticacaoCasosDeUso {
             });
             
             return { token };
-        } catch (err) {
-            throw new Error("Token inválido!");
-        };
-
-
     }
 
 }
