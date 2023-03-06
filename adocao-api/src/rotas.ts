@@ -7,7 +7,7 @@ const rotas = Router();
 
 const usuarioControle = new UsuarioControle();
 rotas.post("/usuarios/cadastro", usuarioControle.cadastrarUsuario);
-rotas.post("/usuarios/senha",ValidarAutenticacao, usuarioControle.atualizarSenha);
+rotas.put("/usuarios/senha",ValidarAutenticacao, usuarioControle.atualizarSenha);
 
 
 const autenticacaoControle = new AutenticacaoControle();

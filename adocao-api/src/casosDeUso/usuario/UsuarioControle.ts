@@ -21,6 +21,7 @@ export class UsuarioControle {
     async atualizarSenha(request: Request, response: Response) {
         const { novaSenha } = request.body;
         const autorToken = request.headers.authorization;
+        
         if (!autorToken) {throw new Error("Sem token!")};
         const [ ,token] = autorToken.split(" ");
 

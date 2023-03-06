@@ -15,6 +15,7 @@ export function Login() {
     event.preventDefault();
 
     setComunicao(true);
+    Cookies.remove("token");
     
     await api.post("autenticacao", {
       email,
@@ -27,6 +28,7 @@ export function Login() {
     .catch((err) => console.log(err));
 
     setComunicao(false);
+    navigate("/home");
   }
 
   return (

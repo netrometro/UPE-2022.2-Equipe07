@@ -12,7 +12,7 @@ export class AutenticacaoControle {
             senha
         });
 
-        return response.json(token);
+        return response.status(200).json(token);
     }
 
     async recuperacaoDeConta(request: Request, response: Response) {
