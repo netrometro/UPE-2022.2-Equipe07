@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/api";
 import { validacaoEmail } from "../../lib/validacaoDeEmail";
 
@@ -15,19 +14,21 @@ export function InsercaoDeEmail({ setEnvio }: InsercaoDeEmailProps) {
     event.preventDefault();
 
     setComunicao(true);
+    
+    setEnvio(true);
 
     await api
       .post("recuperacao", {
-        email,
+        email
       })
-      .catch((err) => console.log(err))
-      .finally(() => setEnvio(true));
+      .catch((err) => console.log(err));
 
-    setComunicao(true);
+      setComunicao(false);
+
   }
 
   return (
-    <form className="grid col-auto">
+    <form className="grid col-auto" onSubmit={(event) => recuperacao(event)}>
       <span className="text-sky-800">Email</span>
       <input
         type="email"
@@ -41,9 +42,8 @@ export function InsercaoDeEmail({ setEnvio }: InsercaoDeEmailProps) {
 
       <button
         type="submit"
-        disabled={!validacaoEmail.test(email)}
+        disabled={!validacaoEmail.test(email) || comunicao}
         className="bg-orange-500 text-gray-800 rounded-md min-w-full my-4 grid place-content-center hover:bg-orange-600 focus:border-gray-900 transition-colors disabled:bg-orange-500 disabled:opacity-80 font-medium"
-        onClick={(event) => recuperacao(event)}
       >
         Enviar
       </button>

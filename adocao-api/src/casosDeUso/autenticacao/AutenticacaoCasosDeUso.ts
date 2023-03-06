@@ -40,7 +40,7 @@ export class AutenticacaoCasosDeUso {
         });
 
         if (!usuarioExistente) {
-            throw new Error("Usuário existente!");
+            throw new Error("Usuário não existente!");
         }
 
         const geradorDeToken = new GeradorDeTokenProvedor();

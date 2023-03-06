@@ -1,16 +1,42 @@
-import { useState } from "react";
+import Cookies from "js-cookie";
+import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../lib/api";
 
 export function InsercaoDeCodigo() {
     const [codigo, setCodigo] = useState("");
+    const [comunicao, setComunicao] = useState(false);
+    const navigate = useNavigate();
+
+    async function conectar(event: FormEvent) {
+      event.preventDefault();
+
+      setComunicao(true);
+
+      
+      Cookies.set("token", codigo);
+        
+      
+      setComunicao(false);
+      navigate("/seguranca");
+    }
 
   return (
     // function forar
-    <form onSubmit={() => console.log("enviado")}>
+    <form className="grid col-auto" onSubmit={(event) => conectar(event)}>
 
-      <span>Código</span>
-      <input type="text" onChange={(event) => setCodigo(event.target.value)} />
+      <span className="text-sky-800">Código</span>
+      <input
+      type="text"
+      onChange={(event) => setCodigo(event.target.value)}
+      className="rounded-md border-sky-800 border-2"
+      />
 
-      <button type="submit" disabled={codigo.length < 5}>
+      <button
+      type="submit"
+      disabled={codigo.length < 5}
+      className="bg-orange-500 text-gray-800 rounded-md min-w-full my-4 grid place-content-center hover:bg-orange-600 focus:border-gray-900 transition-colors disabled:bg-orange-500 disabled:opacity-80 font-medium"
+      >
         Login
       </button>
 

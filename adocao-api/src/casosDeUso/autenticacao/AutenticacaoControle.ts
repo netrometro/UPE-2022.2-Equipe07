@@ -21,6 +21,8 @@ export class AutenticacaoControle {
         const autenticacaoCasosDeUso = new AutenticacaoCasosDeUso();
 
         autenticacaoCasosDeUso.recuperacaoDeConta({ email });
+
+        return response.status(200).json();
     }
 
     async verficacarTokenDeRecuperacao(request: Request, response: Response) {
