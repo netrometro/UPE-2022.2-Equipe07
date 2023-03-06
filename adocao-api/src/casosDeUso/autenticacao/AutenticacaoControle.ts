@@ -14,4 +14,22 @@ export class AutenticacaoControle {
 
         return response.json(token);
     }
+
+    async recuperacaoDeConta(request: Request, response: Response) {
+        const { email } = request.body;
+
+        const autenticacaoCasosDeUso = new AutenticacaoCasosDeUso();
+
+        autenticacaoCasosDeUso.recuperacaoDeConta({ email });
+    }
+
+    async verficacarTokenDeRecuperacao(request: Request, response: Response) {
+        const { tokenDeRecuperacao } = request.body;
+
+        const autenticacaoCasosDeUso = new AutenticacaoCasosDeUso();
+
+        const token = autenticacaoCasosDeUso.verificarTokenDeRecuperacao(tokenDeRecuperacao);
+
+        return response.status(200).json(token);
+    }
 }
