@@ -1,8 +1,11 @@
 import "express-async-errors";
 import express, { NextFunction, Request, Response } from "express";
+import cors from 'cors';
 import { rotas } from "./rotas";
 
 const app = express();
+
+app.use(cors())
 
 app.use(express.json());
 
@@ -18,4 +21,4 @@ app.use(
 );
 
 
-app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+app.listen(3333, () => console.log("Servidor rodando na porta 3000"));
