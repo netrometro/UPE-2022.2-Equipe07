@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../lib/api";
+import { api } from "../../lib/api";
 import CatImage from "../assets/catastronaut.svg";
-import { validacaoEmail } from "../lib/validacaoDeEmail";
+import { validacaoEmail } from "../../lib/validacaoDeEmail";
 
 export function Cadastro() {
   const [nome, setNome] = useState("");
@@ -25,7 +25,7 @@ export function Cadastro() {
         email,
         senha,
       })
-      .then(() => navigate("/"))
+      .then(() => navigate("/cadastro/concluido"))
       .catch((err) => console.log(err));
 
     setComunicao(false);

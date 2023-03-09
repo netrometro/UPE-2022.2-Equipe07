@@ -2,8 +2,8 @@ import Cookies from "js-cookie";
 import { FormEvent, useState } from "react";
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
-import { validacaoEmail } from "../lib/validacaoDeEmail";
-import { api } from "../lib/api";
+import { validacaoEmail } from "../../lib/validacaoDeEmail";
+import { api } from "../../lib/api";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ export function Login() {
     .catch((err) => console.log(err));
 
     setComunicao(false);
-    navigate("/home");
+    //navigate("/home");
   }
 
   return (
@@ -43,7 +43,7 @@ export function Login() {
             Não tem uma conta?
             <button
               type="button"
-              onClick={() => navigate("cadastro")}
+              onClick={() => navigate("/cadastro")}
               className="text-orange-600 underline-offset-2 hover:underline"
             >
               Crie Agora
@@ -66,7 +66,7 @@ export function Login() {
 
             <button
               type="button"
-              onClick={() => navigate("recuperacao")}
+              onClick={() => navigate("/recuperacao")}
               className="text-orange-600 underline-offset-2 hover:underline place-self-start"
             >
               Esqueci a senha

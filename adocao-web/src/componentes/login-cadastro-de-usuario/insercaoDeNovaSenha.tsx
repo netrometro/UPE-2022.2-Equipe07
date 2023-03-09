@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import { FormEvent, useEffect, useState } from "react";
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
-import { api } from "../lib/api";
+import { api } from "../../lib/api";
 
 export function InsercaoDeNovaSenha() {
   const [senha, setSenha] = useState("");
@@ -13,7 +13,7 @@ export function InsercaoDeNovaSenha() {
   useEffect(() => {
     const token  = Cookies.get("token");
     if (!token) {
-        navigator("/");
+        navigator("/semTokenNoInsercaoDeNovaSenha");
     }
   })
 

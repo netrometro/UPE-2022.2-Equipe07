@@ -1,20 +1,24 @@
-import Cookies from "js-cookie";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CabecalhoHome from './CabecalhoHome';
+import ConteudoHome from './ConteudoHome';
+
 
 export function Home() {
     const navigator = useNavigate();
 
+    /** 
     useEffect(() => {
         const token  = Cookies.get("token");
         if (!token) {
-            navigator("/");
+            navigator("/nsemTolkeNaHome");
         }
       })
+    */
 
       return (
-        <div>
-            Hello World!
-        </div>
+        <>
+          <CabecalhoHome />
+          <ConteudoHome />
+        </>
       );
 }
