@@ -16,7 +16,10 @@ rotas.post("/autenticacao", autenticacaoControle.autenticarUsuario);
 rotas.post("/recuperacao", autenticacaoControle.recuperacaoDeConta);
 rotas.post("verificacao", autenticacaoControle.verficacarTokenDeRecuperacao);
 
+//rota nova colocada por antonio
 const animalControle = new AnimalControle();
 rotas.post("/animal/cadastro", animalControle.cadastrarAnimal);
+
+
 
 export{ rotas };

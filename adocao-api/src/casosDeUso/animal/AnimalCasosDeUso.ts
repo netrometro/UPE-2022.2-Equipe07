@@ -1,6 +1,4 @@
-import { hash } from "bcryptjs";
 import { client } from "../../prisma/client";
-import { indentificarAutorToken } from "../../provedores/indentificarAutorToken";
 
 interface CadastratoAnimal {
     nome: string;
