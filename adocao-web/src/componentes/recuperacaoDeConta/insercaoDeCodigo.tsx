@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { FormEvent, useState } from "react";
+import { FormEvent, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/api";
 
@@ -28,7 +28,7 @@ export function InsercaoDeCodigo() {
       <span className="text-sky-800">Código</span>
       <input
       type="text"
-      onChange={(event) => setCodigo(event.target.value)}
+      onChange={(event: { target: { value: SetStateAction<string>; }; }) => setCodigo(event.target.value)}
       className="rounded-md border-sky-800 border-2"
       />
 

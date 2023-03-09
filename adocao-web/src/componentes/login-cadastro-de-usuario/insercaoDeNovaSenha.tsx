@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, SetStateAction, useEffect, useState } from "react";
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/api";
@@ -42,14 +42,14 @@ export function InsercaoDeNovaSenha() {
           <span className="text-sky-800"> Senha *</span>
           <input
             type="password"
-            onChange={(event) => setSenha(event.target.value)}
+            onChange={(event: { target: { value: SetStateAction<string>; }; }) => setSenha(event.target.value)}
             className="rounded-md border-sky-800 border-2"
           />
 
           <span className="text-sky-800">Senha Novamente*</span>
           <input
             type="password"
-            onChange={(event) => setSenhaRepeticao(event.target.value)}
+            onChange={(event: { target: { value: SetStateAction<string>; }; }) => setSenhaRepeticao(event.target.value)}
             className="rounded-md border-sky-800 border-2"
           />
           <button

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, SetStateAction, useState } from "react";
 import { api } from "../../lib/api";
 import { validacaoEmail } from "../../lib/validacaoDeEmail";
 
@@ -32,7 +32,7 @@ export function InsercaoDeEmail({ setEnvio }: InsercaoDeEmailProps) {
       <span className="text-sky-800">Email</span>
       <input
         type="email"
-        onChange={(event) => setEmail(event.target.value)}
+        onChange={(event: { target: { value: SetStateAction<string>; }; }) => setEmail(event.target.value)}
         className="rounded-md border-sky-800 border-2"
       />
 
