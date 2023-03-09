@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { InsercaoDeCodigo } from "./insercaoDeCodigo";
-import dogLost from "../../assets/dogLost.png";
+import dogLost from "../assets/dogLost.png";
 import { InsercaoDeEmail } from "./insercaoDeEmail";
 
 export function RecuperacaoDeConta() {

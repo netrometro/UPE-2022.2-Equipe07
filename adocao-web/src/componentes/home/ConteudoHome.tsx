@@ -4,7 +4,8 @@ import { Cadastro } from '../login-cadastro-de-usuario/cadastro';
 import { RecuperacaoDeConta } from '../recuperacaoDeConta/index';
 import { InsercaoDeNovaSenha } from '../login-cadastro-de-usuario/insercaoDeNovaSenha';
 import LandingPageHome from './LandingPageHome';
-import CadastroNovoAnimal from '../perfil-e-cadastro-do-animal/CadastroNovoAnimal';
+import { CadastroAnimalConcluido } from '../perfil-e-cadastro-do-animal/CadastroAnimalConcluido';
+import { CadastroNovoAnimal } from '../perfil-e-cadastro-do-animal/CadastroNovoAnimal';
 
 
 function ConteudoHome() {

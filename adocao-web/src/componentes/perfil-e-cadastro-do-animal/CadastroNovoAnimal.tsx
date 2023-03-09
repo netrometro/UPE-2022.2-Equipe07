@@ -1,12 +1,9 @@
-import "./CadastroNovoAnimal.css"
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/api";
-import CatImage from "../assets/catastronaut.svg";
-import { validacaoEmail } from "../../lib/validacaoDeEmail";
 
 
-const CadastroNovoAnimal = () => {
+export function CadastroNovoAnimal() {
     const [nome, setNome] = useState("");
     const [raca, setRaca] = useState("");
     const [idade, setIdade] = useState("");
@@ -39,8 +36,15 @@ const CadastroNovoAnimal = () => {
         .catch((err) => console.log(err));
 
         setComunicacao(false);
-    }
 
+        setNome("")
+        setRaca("")
+        setIdade("")
+        setGenero("")
+        setPersonalidade("")
+        setNecessidadesComportamentais("")
+        setNecessidadesMedicas("")
+    }
 
     return (
         <>
@@ -52,6 +56,7 @@ const CadastroNovoAnimal = () => {
                 type="text"
                 onChange={(event) => setNome(event.target.value)}
                 className="rounded-md border-sky-800 border-2"
+                required
                 />
                 <br/>
 
@@ -60,6 +65,7 @@ const CadastroNovoAnimal = () => {
                 type="text"
                 onChange={(event) => setRaca(event.target.value)}
                 className="rounded-md border-sky-800 border-2"
+                required
                 />
                 <br/>
                 
@@ -107,12 +113,19 @@ const CadastroNovoAnimal = () => {
                 <input type="file" id="foto" name="foto" />
                 <br/>
                 <br/>
-                
-                <button type="submit">Cadastrar pet</button>
-            
+
+                <button
+                type="submit"
+                disabled={
+                    nome.length < 3
+                }
+                onClick={(event) => cadastrarAnimal(event)}
+                className="bg-orange-500 text-gray-800 rounded-md min-w-full my-4 grid place-content-center hover:bg-orange-600 focus:border-gray-900 transition-colors disabled:bg-orange-500 disabled:opacity-80 font-medium"
+                >
+                Cadastrar pet
+                </button>
+
             </form>
         </>
     );
 }
-
-export default CadastroNovoAnimal;

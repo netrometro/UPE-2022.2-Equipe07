@@ -28,6 +28,14 @@ function CabecalhoHome() {
             >Meu Perfil</button>
             <button
             className="m-10"
+            onClick={() => {navigate("/animal/perfil")}}
+            >Perfil Animal</button>
+            <button
+            className="m-10"
+            onClick={() => {navigate("/animal/cadastro")}}
+            >Cadastro Novo Animal</button>
+            <button
+            className="m-10"
             onClick={() => {navigate("/parceiros")}}
             >Parceiros</button>
         </div>

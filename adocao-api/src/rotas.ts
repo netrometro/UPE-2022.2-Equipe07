@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AutenticacaoControle } from "./casosDeUso/autenticacao/AutenticacaoControle";
 import { UsuarioControle } from "./casosDeUso/usuario/UsuarioControle";
 import { ValidarAutenticacao } from "./intermediarios/ValidarAutenticacao";
+import { AnimalControle } from "./casosDeUso/animal/AnimalControle";
 
 const rotas = Router();
 
@@ -15,5 +16,7 @@ rotas.post("/autenticacao", autenticacaoControle.autenticarUsuario);
 rotas.post("/recuperacao", autenticacaoControle.recuperacaoDeConta);
 rotas.post("verificacao", autenticacaoControle.verficacarTokenDeRecuperacao);
 
+const animalControle = new AnimalControle();
+rotas.post("/animal/cadastro", animalControle.cadastrarAnimal);
 
 export{ rotas };
