@@ -1,4 +1,4 @@
-import CatImage from "../assets/catastronaut.svg";
+import CatImage from "../../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
 
 function CabecalhoHome() {

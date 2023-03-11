@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/api";
-import CatImage from "../assets/catastronaut.svg";
+import CatImage from "../../assets/catastronaut.svg";
 import { validacaoEmail } from "../../lib/validacaoDeEmail";
 
 export function Cadastro() {

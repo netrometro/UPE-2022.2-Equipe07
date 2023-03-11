@@ -1,4 +1,4 @@
-import './PerfilAnimal.css'
+import './PerfilAnimal.css';
 import { useEffect } from 'react';
 import axios from 'axios';
 

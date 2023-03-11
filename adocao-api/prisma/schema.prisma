@@ -43,14 +43,7 @@ model Recuperacao {
 
 //--Meus Modelos Prisma-- Antonio
 // Modelo para as fotos
-model Foto {
-  id         Int      @id @default(autoincrement())
-  url        String?
-  animalId   Int
-  animal     Animal   @relation(fields: [animalId], references: [id])
 
-  @@map("fotos")
-}
 // Modelo para o animal
 model Animal {
   id                     Int  @id @default(autoincrement())
@@ -58,11 +51,11 @@ model Animal {
   nome                   String   
   raca                   String
   genero                 String?
-  idade                  Int?
+  idade                  String?
   personalidade          String?
   necessidadesMedicas    String?
   necessidadesComportamentais String?
-  fotos                  Foto[]
+  
 
   @@map("animais")
 }
