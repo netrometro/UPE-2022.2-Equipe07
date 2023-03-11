@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import CatImage from "../assets/catastronaut.svg";
 import { validacaoEmail } from "../lib/validacaoDeEmail";
+import { CabecalhoHome } from "../componentes/cabecalhoHome";
 
 export function Cadastro() {
   const [nome, setNome] = useState("");
+  const [nomeDeUsuario, setNomeDeUsuario] = useState("");
   const [descricao, setDescricao] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -22,6 +24,7 @@ export function Cadastro() {
       .post("usuarios/cadastro", {
         nome,
         descricao,
+        nomeDeUsuario,
         email,
         senha,
       })
@@ -33,6 +36,8 @@ export function Cadastro() {
   }
 
   return (
+    <div>
+    <CabecalhoHome />
     <div className="flex justify-center h-screen items-center bg-[url('./assets/bg.jpg')] bg-no-repeat bg-center bg-cover">
       <div className="bg-gray-200 p-6 flex items-center justify-center row w-5/6 rounded-xl shadow-lg h-5/6">
         <span className="w-70">
@@ -46,7 +51,7 @@ export function Cadastro() {
             Já tem conta?{" "}
             <button
               type="button"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/login")}
               className="text-orange-600 underline-offset-2 hover:underline"
             >
               Login
@@ -57,6 +62,13 @@ export function Cadastro() {
             <input
               type="text"
               onChange={(event) => setNome(event.target.value)}
+              className="rounded-md border-sky-800 border-2"
+            />
+
+<span className="text-sky-800">Nome de usuario *</span>
+            <input
+              type="text"
+              onChange={(event) => setNomeDeUsuario(event.target.value)}
               className="rounded-md border-sky-800 border-2"
             />
 
@@ -104,6 +116,7 @@ export function Cadastro() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

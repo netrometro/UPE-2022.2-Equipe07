@@ -5,6 +5,7 @@ import { indentificarAutorToken } from "../../provedores/indentificarAutorToken"
 interface CadastratoUsuario {
     nome: string;
     descricao: string | null;
+    nomeDeUsuario: string;
     email: string;
     senha: string;
 }
@@ -16,7 +17,7 @@ interface AtualizarSenhaProps {
 
 export class UsuarioCasosDeUso {
 
-    async cadastrar({ nome, descricao, email, senha }: CadastratoUsuario) {
+    async cadastrar({ nome, nomeDeUsuario, descricao, email, senha }: CadastratoUsuario) {
 
         const validacaoEmail = /^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$/;
 
@@ -52,6 +53,7 @@ export class UsuarioCasosDeUso {
                 nome,
                 descricao,
                 senha: senhaHash,
+                nomeDeUsuario,
                 email,
                 criacao: new Date(),
                 estado: "ATIVO"

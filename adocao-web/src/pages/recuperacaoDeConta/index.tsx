@@ -2,12 +2,15 @@ import { useState } from "react";
 import { InsercaoDeCodigo } from "./insercaoDeCodigo";
 import dogLost from "../../assets/dogLost.png";
 import { InsercaoDeEmail } from "./insercaoDeEmail";
+import { CabecalhoHome } from "../../componentes/cabecalhoHome";
 
 export function RecuperacaoDeConta() {
   const [enviada, setEnvio] = useState(false);
 
   return (
-    <div className="flex justify-center h-screen items-center bg-[url('./assets/bg2.jpg')] bg-no-repeat bg-center bg-cover">
+    <>
+    <CabecalhoHome />
+    <div className="flex justify-center h-[90%] items-center bg-[url('./assets/bg2.jpg')] bg-no-repeat bg-center bg-cover">
       <div className="bg-gray-200 p-6 flex items-center justify-center row w-5/6 rounded-xl shadow-lg h-5/6">
         <span className="w-70">
           <img src={dogLost} alt="cat_astronaut" className="w-96" />
@@ -22,5 +25,6 @@ export function RecuperacaoDeConta() {
         </div>
       </div>
     </div>
+    </>
   );
 }

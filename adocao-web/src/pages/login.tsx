@@ -4,6 +4,7 @@ import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
 import { validacaoEmail } from "../lib/validacaoDeEmail";
 import { api } from "../lib/api";
+import { CabecalhoHome } from "../componentes/cabecalhoHome";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -28,11 +29,13 @@ export function Login() {
     .catch((err) => console.log(err));
 
     setComunicao(false);
-    navigate("/home");
+    navigate("/");
   }
 
   return (
-    <div className="flex justify-center h-screen items-center bg-[url('./assets/bg.jpg')] bg-no-repeat bg-center bg-cover">
+    <div>
+      <CabecalhoHome />
+    <div className="flex justify-center h-[90vh] items-center bg-[url('./assets/bg.jpg')] bg-no-repeat bg-center bg-cover">
       <div className="bg-gray-200 p-6 flex items-center justify-center row w-5/6 rounded-xl shadow-lg h-5/6">
         <span className="w-70">
           <img src={CatImage} alt="cat_astronaut" className="w-96" />
@@ -43,7 +46,7 @@ export function Login() {
             Não tem uma conta?
             <button
               type="button"
-              onClick={() => navigate("cadastro")}
+              onClick={() => navigate("/cadastro")}
               className="text-orange-600 underline-offset-2 hover:underline"
             >
               Crie Agora
@@ -66,7 +69,7 @@ export function Login() {
 
             <button
               type="button"
-              onClick={() => navigate("recuperacao")}
+              onClick={() => navigate("/recuperacao")}
               className="text-orange-600 underline-offset-2 hover:underline place-self-start"
             >
               Esqueci a senha
@@ -83,6 +86,7 @@ export function Login() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

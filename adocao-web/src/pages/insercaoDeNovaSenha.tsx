@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
+import { CabecalhoHome } from "../componentes/cabecalhoHome";
 
 export function InsercaoDeNovaSenha() {
   const [senha, setSenha] = useState("");
@@ -30,6 +31,8 @@ export function InsercaoDeNovaSenha() {
   }
 
   return (
+    <div>
+      <CabecalhoHome />
     <div className="flex justify-center h-screen items-center bg-[url('./assets/bg.jpg')] bg-no-repeat bg-center bg-cover">
       <div className="bg-gray-200 p-6 flex items-center justify-center row w-5/6 rounded-xl shadow-lg h-5/6">
       <span className="w-70">
@@ -62,6 +65,7 @@ export function InsercaoDeNovaSenha() {
         </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }
