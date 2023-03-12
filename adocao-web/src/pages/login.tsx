@@ -24,12 +24,12 @@ export function Login() {
     }).then((response) =>{
       Cookies.set("token", response.data.token, {expires: 1})
       setComunicao(false);
+      navigate("/");
       // Navegate para dentro de algo
     })
     .catch((err) => console.log(err));
 
     setComunicao(false);
-    navigate("/");
   }
 
   return (

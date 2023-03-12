@@ -123,25 +123,27 @@ export class UsuarioCasosDeUso {
 
         const usuarioExistente = await client.usuario.findFirst({
             where: {
-                id:id.toString()
+                id: id.toString()
             }
         });
 
         if (!usuarioExistente) {
             throw new Error("Token inválido!");
         }
-
-        const nomeDeUsuarioExistente = await client.usuario.findFirst({
+        var nomeDeUsuarioExistente;
+        if (usuarioExistente.nomeDeUsuario != nomeDeUsuario) {
+        nomeDeUsuarioExistente = await client.usuario.findFirst({
             where: {
-                nomeDeUsuario
+                nomeDeUsuario: nomeDeUsuario
             }
         });
+    }
 
         if (nomeDeUsuarioExistente) {
             throw new Error("Esse nome de usuário já usado!");
         }
 
-        client.usuario.update({
+        await client.usuario.update({
             where: {
                 id: id.toString()
             },

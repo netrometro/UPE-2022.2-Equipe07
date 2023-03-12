@@ -11,7 +11,7 @@ export class UsuarioControle {
 
         const usuarioCasosDeUso = new UsuarioCasosDeUso();
         const {nome, nomeDeUsuario, descricao, criacao } = await usuarioCasosDeUso.buscarUsuario(token);
-        return response.status(200).json({nome, nomeDeUsuario, descricao})
+        return response.status(200).json({nome, nomeDeUsuario, descricao, criacao})
     }
 
     async cadastrarUsuario(request: Request, response: Response) {
@@ -49,7 +49,7 @@ export class UsuarioControle {
         if (!autorToken) {throw new Error("Sem token!")};
         const [ ,token] = autorToken.split(" ");
 
-        const { nome, descricao, email, senha, nomeDeUsuario } = request.body;
+        const { nome, descricao, nomeDeUsuario } = request.body;
 
         const usuarioCasosDeUso = new UsuarioCasosDeUso();
 

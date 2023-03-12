@@ -9,7 +9,7 @@ const usuarioControle = new UsuarioControle();
 rotas.post("/usuarios/cadastro", usuarioControle.cadastrarUsuario);
 rotas.put("/usuarios/senha",ValidarAutenticacao, usuarioControle.atualizarSenha);
 rotas.get("/perfil",ValidarAutenticacao, usuarioControle.buscarMeuPerfil);
-rotas.put("/perfil",ValidarAutenticacao, usuarioControle.buscarMeuPerfil);
+rotas.put("/perfil",ValidarAutenticacao, usuarioControle.atualizarCadastro);
 
 
 const autenticacaoControle = new AutenticacaoControle();
