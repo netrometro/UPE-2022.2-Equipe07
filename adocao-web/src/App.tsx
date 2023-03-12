@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Cadastro } from './pages/cadastro';
 import { Home } from './pages/home';

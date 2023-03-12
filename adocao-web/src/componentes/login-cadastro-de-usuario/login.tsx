@@ -21,19 +21,15 @@ export function Login() {
     await api.post("autenticacao", {
       email,
       senha
-    }).then((response) =>{
+    }).then((response: { data: { token: string; }; }) =>{
       Cookies.set("token", response.data.token, {expires: 1})
       setComunicao(false);
       navigate("/");
       // Navegate para dentro de algo
     })
-    .catch((err) => console.log(err));
+    .catch((err: any) => console.log(err));
 
     setComunicao(false);
-<<<<<<< HEAD:adocao-web/src/componentes/login-cadastro-de-usuario/login.tsx
-    //navigate("/home");
-=======
->>>>>>> origin/main:adocao-web/src/pages/login.tsx
   }
 
   return (
