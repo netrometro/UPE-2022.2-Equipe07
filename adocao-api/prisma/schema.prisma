@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id            String        @id @default(uuid())
+  nome          String
+  nomeDeUsuario String        @unique
+  descricao     String?
+  email         String        @unique
+  senha         String
+  criacao       DateTime
+  estado        STATUS
+  recuperacoes  Recuperacao[]
+
+  @@map("usuarios")
+}
+
+model Recuperacao {
+  id        String   @id @default(uuid())
+  usuarioId String
+  token     String?
+  criacao   DateTime @default(now())
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+
+  @@map("recuperacoes")
+}
+
+enum STATUS {
+  ATIVO
+  ANALISE
+  SUSPENSO
+  BANIDO
+}
+
+//--Meus Modelos Prisma-- Antonio
+// Modelo para as fotos
+
+// Modelo para o animal
+model Animal {
+  id                     Int  @id @default(autoincrement())
+  id_dono                Int?  //Esse field aqui tem que ser ligado com o BD de Amadeu, ja que ele ta fazendo o login do usuario
+  nome                   String   
+  raca                   String
+  genero                 String?
+  idade                  String?
+  personalidade          String?
+  necessidadesMedicas    String?
+  necessidadesComportamentais String?
+  
+
+  @@map("animais")
+}
