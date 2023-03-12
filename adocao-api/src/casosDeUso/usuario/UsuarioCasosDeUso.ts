@@ -5,6 +5,7 @@ import { indentificarAutorToken } from "../../provedores/indentificarAutorToken"
 interface CadastratoUsuario {
     nome: string;
     descricao: string | null;
+    nomeDeUsuario: string;
     email: string;
     senha: string;
 }
@@ -14,9 +15,35 @@ interface AtualizarSenhaProps {
     novaSenha: string;
 }
 
+interface AtualizarCadastroProps {
+    token: string;
+    nomeDeUsuario: string;
+    nome: string;
+    descricao: string | null;
+}
+
 export class UsuarioCasosDeUso {
 
-    async cadastrar({ nome, descricao, email, senha }: CadastratoUsuario) {
+    async buscarUsuario(token: string) {
+        const id = await indentificarAutorToken(token);
+        if (!id) {
+            throw new Error("Token inválido!");
+        }
+
+        const usuarioExistente = await client.usuario.findFirst({
+            where: {
+                id:id.toString()
+            }
+        });
+
+        if (!usuarioExistente) {
+            throw new Error("Token inválido!");
+        }
+
+        return usuarioExistente;
+    }
+
+    async cadastrar({ nome, nomeDeUsuario, descricao, email, senha }: CadastratoUsuario) {
 
         const validacaoEmail = /^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$/;
 
@@ -52,6 +79,7 @@ export class UsuarioCasosDeUso {
                 nome,
                 descricao,
                 senha: senhaHash,
+                nomeDeUsuario,
                 email,
                 criacao: new Date(),
                 estado: "ATIVO"
@@ -85,5 +113,45 @@ export class UsuarioCasosDeUso {
                 senha: senhaHash
             }
         });
+    }
+
+    async atualizarCadastro({token, nomeDeUsuario, nome, descricao}: AtualizarCadastroProps) {
+        const id = await indentificarAutorToken(token);
+        if (!id) {
+            throw new Error("Token inválido!");
+        }
+
+        const usuarioExistente = await client.usuario.findFirst({
+            where: {
+                id: id.toString()
+            }
+        });
+
+        if (!usuarioExistente) {
+            throw new Error("Token inválido!");
+        }
+        var nomeDeUsuarioExistente;
+        if (usuarioExistente.nomeDeUsuario != nomeDeUsuario) {
+        nomeDeUsuarioExistente = await client.usuario.findFirst({
+            where: {
+                nomeDeUsuario: nomeDeUsuario
+            }
+        });
+    }
+
+        if (nomeDeUsuarioExistente) {
+            throw new Error("Esse nome de usuário já usado!");
+        }
+
+        await client.usuario.update({
+            where: {
+                id: id.toString()
+            },
+            data: {
+                nome,
+                nomeDeUsuario,
+                descricao
+            }
+        })
     }
 }

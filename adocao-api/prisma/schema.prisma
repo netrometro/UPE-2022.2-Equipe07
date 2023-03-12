@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,16 +8,27 @@ datasource db {
 }
 
 model Usuario {
-  id        String   @id @default(uuid())
-  nome      String
-  descricao String?
-  email     String   @unique
-  senha     String
-  criacao   DateTime
-  estado    STATUS
-  recuperacoes Recuperacao[] 
+  id            String        @id @default(uuid())
+  nome          String
+  nomeDeUsuario String        @unique
+  descricao     String?
+  email         String        @unique
+  senha         String
+  criacao       DateTime
+  estado        STATUS
+  recuperacoes  Recuperacao[]
 
   @@map("usuarios")
+}
+
+model Recuperacao {
+  id        String   @id @default(uuid())
+  usuarioId String
+  token     String?
+  criacao   DateTime @default(now())
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+
+  @@map("recuperacoes")
 }
 
 enum STATUS {
@@ -28,14 +36,4 @@ enum STATUS {
   ANALISE
   SUSPENSO
   BANIDO
-}
-
-model Recuperacao {
-  id String @id @default(uuid())
-  usuario Usuario @relation(fields: [usuarioId], references: [id])
-  usuarioId String
-  token String?
-  criacao DateTime @default(now())
-
-  @@map("recuperacoes")
 }

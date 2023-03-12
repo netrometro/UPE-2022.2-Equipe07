@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { FormEvent, SetStateAction, useState } from "react";
+import { FormEvent, useState } from "react";
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
 import { validacaoEmail } from "../lib/validacaoDeEmail";
@@ -30,10 +30,6 @@ export function Login() {
     .catch((err) => console.log(err));
 
     setComunicao(false);
-<<<<<<< HEAD:adocao-web/src/componentes/login-cadastro-de-usuario/login.tsx
-    //navigate("/home");
-=======
->>>>>>> origin/main:adocao-web/src/pages/login.tsx
   }
 
   return (
@@ -60,14 +56,14 @@ export function Login() {
             <span className="text-sky-800 ">Email</span>
             <input
               type="email"
-              onChange={(event: { target: { value: SetStateAction<string>; }; }) => setEmail(event.target.value)}
+              onChange={(event) => setEmail(event.target.value)}
               className="rounded-md border-sky-800 border-2 "
             />
 
             <span className="text-sky-800">Senha</span>
             <input
               type="password"
-              onChange={(event: { target: { value: SetStateAction<string>; }; }) => setSenha(event.target.value)}
+              onChange={(event) => setSenha(event.target.value)}
               className="rounded-md border-sky-800 border-2 "
             />
 
