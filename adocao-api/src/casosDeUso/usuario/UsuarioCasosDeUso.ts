@@ -15,7 +15,33 @@ interface AtualizarSenhaProps {
     novaSenha: string;
 }
 
+interface AtualizarCadastroProps {
+    token: string;
+    nomeDeUsuario: string;
+    nome: string;
+    descricao: string | null;
+}
+
 export class UsuarioCasosDeUso {
+
+    async buscarUsuario(token: string) {
+        const id = await indentificarAutorToken(token);
+        if (!id) {
+            throw new Error("Token inválido!");
+        }
+
+        const usuarioExistente = await client.usuario.findFirst({
+            where: {
+                id:id.toString()
+            }
+        });
+
+        if (!usuarioExistente) {
+            throw new Error("Token inválido!");
+        }
+
+        return usuarioExistente;
+    }
 
     async cadastrar({ nome, nomeDeUsuario, descricao, email, senha }: CadastratoUsuario) {
 
@@ -87,5 +113,45 @@ export class UsuarioCasosDeUso {
                 senha: senhaHash
             }
         });
+    }
+
+    async atualizarCadastro({token, nomeDeUsuario, nome, descricao}: AtualizarCadastroProps) {
+        const id = await indentificarAutorToken(token);
+        if (!id) {
+            throw new Error("Token inválido!");
+        }
+
+        const usuarioExistente = await client.usuario.findFirst({
+            where: {
+                id: id.toString()
+            }
+        });
+
+        if (!usuarioExistente) {
+            throw new Error("Token inválido!");
+        }
+        var nomeDeUsuarioExistente;
+        if (usuarioExistente.nomeDeUsuario != nomeDeUsuario) {
+        nomeDeUsuarioExistente = await client.usuario.findFirst({
+            where: {
+                nomeDeUsuario: nomeDeUsuario
+            }
+        });
+    }
+
+        if (nomeDeUsuarioExistente) {
+            throw new Error("Esse nome de usuário já usado!");
+        }
+
+        await client.usuario.update({
+            where: {
+                id: id.toString()
+            },
+            data: {
+                nome,
+                nomeDeUsuario,
+                descricao
+            }
+        })
     }
 }

@@ -27,7 +27,7 @@ export function InsercaoDeNovaSenha() {
       headers: {
         authorization: `Basic ${Cookies.get("token")}`
       }
-    }).catch((err) => console.error(err))
+    }).then(() => navigator("/")).catch((err) => console.error(err))
   }
 
   return (

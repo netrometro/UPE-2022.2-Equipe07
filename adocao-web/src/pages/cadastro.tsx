@@ -28,7 +28,7 @@ export function Cadastro() {
         email,
         senha,
       })
-      .then(() => navigate("/"))
+      .then(() => navigate("/login"))
       .catch((err) => console.log(err));
 
     setComunicao(false);

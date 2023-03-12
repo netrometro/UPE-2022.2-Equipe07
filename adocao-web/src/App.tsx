@@ -4,6 +4,7 @@ import { Cadastro } from './pages/cadastro';
 import { Home } from './pages/home';
 import { InsercaoDeNovaSenha } from './pages/insercaoDeNovaSenha';
 import { Login } from './pages/login';
+import { Perfil } from './pages/perfil';
 import { RecuperacaoDeConta } from './pages/recuperacaoDeConta';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/recuperacao" element={<RecuperacaoDeConta />} />
         <Route path="/seguranca" element={<InsercaoDeNovaSenha />} />
+        <Route path='/usuario/perfil' element={<Perfil />} />
       </Routes>
     </div>
   );
