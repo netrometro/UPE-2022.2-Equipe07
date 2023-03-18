@@ -10,7 +10,7 @@ interface CadastratoUsuario {
     senha: string;
 }
 
-interface AtualizarSenhaProps {
+interface AtualizarSenhaProps { 
     token: string;
     novaSenha: string;
 }

@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CabecalhoHome } from "../../componentes/cabecalhoHome";
 import { api } from "../../lib/api";
 import { AtualizarPerfil } from "./atulizarPefil";
@@ -11,8 +12,15 @@ export function Perfil() {
   const [descricao, setDescricao] = useState("Sem usuario");
   const [criacao, setCriacao] = useState(new Date());
   const [atualizar, setAtualizar] = useState(false);
+  const navigator = useNavigate();
 
   useEffect(() => {
+
+      const token  = Cookies.get("token");
+      if (!token) {
+          navigator("/");
+      }
+
     api.get("perfil", {
         headers: {
           authorization: `Basic ${Cookies.get("token")}`
