@@ -4,7 +4,7 @@ import { Cadastro } from './pages/cadastro';
 import { Home } from './pages/home';
 import { InsercaoDeNovaSenha } from './pages/insercaoDeNovaSenha';
 import { Login } from './pages/login';
-import { Parceiros } from './pages/parceiros';
+import { Parceiros } from './pages/parceiro';
 import { Perfil } from './pages/perfil';
 import { RecuperacaoDeConta } from './pages/recuperacaoDeConta';
 
