@@ -60,6 +60,7 @@ model Parceiro {
   contato   String
   posicaoX  Float
   posicaoY  Float
+  pagina    String
 
   @@map("parceiros")
 }
