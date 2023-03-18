@@ -11,6 +11,10 @@ app.use(express.json());
 
 app.use(rotas);
 
+app.get('/', (req,res) => {
+    res.send('Bem-Vindos ao AdoCão!')
+})
+
 app.use(
     (error: Error, request: Request, response: Response, next: NextFunction) => {
         return response.status(400).json({

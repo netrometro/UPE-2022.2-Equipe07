@@ -17,6 +17,7 @@ model Usuario {
   criacao       DateTime
   estado        STATUS
   recuperacoes  Recuperacao[]
+  posts         Post[]
 
   @@map("usuarios")
 }
@@ -36,4 +37,17 @@ enum STATUS {
   ANALISE
   SUSPENSO
   BANIDO
+}
+
+model Post {
+  postId           Int        @id @default(autoincrement())
+  usuarios         Usuario    @relation(fields: [usuarioId], references: [id])
+  usuarioId        String
+  createAt         DateTime?   @default(now())
+  uptadeAt         DateTime?   @updatedAt
+  descricao        String
+  imageURL         String
+
+  @@map("posts")
+
 }
