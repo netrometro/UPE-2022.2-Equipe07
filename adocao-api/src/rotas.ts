@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { AutenticacaoControle } from "./casosDeUso/autenticacao/AutenticacaoControle";
+import { ParceirosControle } from "./casosDeUso/parceiro/parceirosControle";
 import PostControle from "./casosDeUso/post/PostControle";
 import { UsuarioControle } from "./casosDeUso/usuario/UsuarioControle";
 import { ValidarAutenticacao } from "./intermediarios/ValidarAutenticacao";
@@ -23,5 +24,7 @@ const postControle = new PostControle();
 rotas.post('/post/criar', postControle.criarPost);
 rotas.get("/post/:postId", postControle.pegarTudo);
 
+const parceirosControle = new ParceirosControle();
+rotas.get("/parceiros", parceirosControle.listarParceiros);
 
 export{ rotas };

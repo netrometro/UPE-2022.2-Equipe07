@@ -40,14 +40,27 @@ enum STATUS {
 }
 
 model Post {
-  postId           Int        @id @default(autoincrement())
-  usuarios         Usuario    @relation(fields: [usuarioId], references: [id])
-  usuarioId        String
-  createAt         DateTime?   @default(now())
-  uptadeAt         DateTime?   @updatedAt
-  descricao        String
-  imageURL         String
+  postId    Int       @id @default(autoincrement())
+  usuarios  Usuario   @relation(fields: [usuarioId], references: [id])
+  usuarioId String
+  createAt  DateTime? @default(now())
+  uptadeAt  DateTime? @updatedAt
+  descricao String
+  imageURL  String
 
   @@map("posts")
+}
 
+model Parceiro {
+  id        Int    @id @default(autoincrement())
+  imageURL  String
+  nome      String
+  cnpj      String
+  descricao String
+  contato   String
+  posicaoX  Float
+  posicaoY  Float
+  pagina    String
+
+  @@map("parceiros")
 }

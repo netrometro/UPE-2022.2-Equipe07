@@ -1,5 +1,7 @@
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Cookies from "js-cookie";
 
 export function CabecalhoHome() {
 
@@ -14,17 +16,17 @@ export function CabecalhoHome() {
             className="m-10"
             onClick={() => {navigate("/")}}
             >Home</button>
-            <button
+            {Cookies.get("token") == null ?<button
             onClick={() => {navigate("/login")}}
-            >Login</button>
+            >Login</button> :
+            <button
+            className="m-10"
+            onClick={() => {navigate("/usuario/perfil")}}
+            >Meu Perfil</button>}
             <button
             className="m-10"
             onClick={() => {navigate("/cadastro")}}
             >Cadastro</button>
-            <button
-            className="m-10"
-            onClick={() => {navigate("/usuario/perfil")}}
-            >Meu Perfil</button>
             <button
             className="m-10"
             onClick={() => {navigate("/parceiros")}}
