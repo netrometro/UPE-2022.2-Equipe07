@@ -21,8 +21,8 @@ rotas.post("verificacao", autenticacaoControle.verficacarTokenDeRecuperacao);
 
 
 const postControle = new PostControle();
-rotas.post('/post/criar', postControle.criarPost);
-rotas.get("/post/:postId", postControle.pegarTudo);
+rotas.post('/post/criar',  ValidarAutenticacao, postControle.criarPost);
+rotas.get("/post/:postId", ValidarAutenticacao, postControle.pegarPost);
 
 const parceirosControle = new ParceirosControle();
 rotas.get("/parceiros", parceirosControle.listarParceiros);

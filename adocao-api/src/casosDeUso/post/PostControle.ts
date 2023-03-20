@@ -1,47 +1,31 @@
 import { Request, Response } from "express";
-import { client } from "../../prisma/client";
+import PostCasosDeUso from "./PostCasosDeUso";
 
-export class CriarPostagem {
-    async criarPost(req: Request, res: Response) {
-        try {
-            const { imageURL, descricao, usuarioId } = req.body;
+export class PostControle {
+    async pegarPost(request: Request, response: Response) {
+        const autorToken = request.headers.authorization;
+        
+        if (!autorToken) {throw new Error("Sem token!")};
+        const [ ,token] = autorToken.split(" ");
 
+        const postCasosDeUso = new PostCasosDeUso();
+        const pegarpost = await postCasosDeUso.pegarPost(token);
 
-            const post = await client.post.create({
-                data: { 
-                        imageURL,
-                        descricao,
-                        usuarioId,
+        return response.json(pegarpost); 
+    }
 
-            }});
+    async criarPost(request: Request, response: Response) {
+        const { imageURL, descricao, usuarioId } = request.body;
+        const autorToken = request.headers.authorization;
+        
+        if (!autorToken) {throw new Error("Sem token!")};
+        const [ ,token] = autorToken.split(" ");
 
-            if (post) {
-                return res.json({message: 'postagem criada com sucesso'})
-            }
+        const postCasosDeUso = new PostCasosDeUso();
+        await postCasosDeUso.criarPost({ token, imageURL, descricao, usuarioId });
 
-            res.status(201).json(post);
-        } catch(erro) {
-            console.error(erro);
-            res.status(500).json({erro: 'erro ao criar postagem'});
-        }
-    };
-
-    async pegarTudo (req: Request, res: Response) {
-        try {
-            const { postId } = req.params;
-            
-            const posts = await client.post.findUnique({
-                where: {
-                    postId: parseInt(postId),
-                }
-            });
-            
-            res.status(200).json(posts);
-        } catch (erro) {
-            console.log(erro);
-            res.status(500).json({ error: 'postagem não encontrada' });
-        }
-    };
+        return response.status(200).json();
+    }
 }
 
-export default CriarPostagem
+export default PostControle

@@ -40,9 +40,11 @@ enum STATUS {
 }
 
 model Post {
-  postId    Int       @id @default(autoincrement())
-  usuarios  Usuario   @relation(fields: [usuarioId], references: [id])
+  id        String   @id @default(uuid())
   usuarioId String
+  token     String?
+  criacao   DateTime @default(now())
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
   createAt  DateTime? @default(now())
   uptadeAt  DateTime? @updatedAt
   descricao String
