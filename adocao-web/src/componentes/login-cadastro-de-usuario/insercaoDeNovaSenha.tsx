@@ -2,8 +2,9 @@ import Cookies from "js-cookie";
 import { FormEvent, SetStateAction, useEffect, useState } from "react";
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
-import { api } from "../lib/api";
-import { CabecalhoHome } from "../componentes/cabecalhoHome";
+import { api } from "../../lib/api";
+import { CabecalhoHome } from "../cabecalhoHome";
+
 
 export function InsercaoDeNovaSenha() {
   const [senha, setSenha] = useState("");

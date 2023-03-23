@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { Login } from '../login-cadastro-de-usuario/login';
 import { Cadastro } from '../login-cadastro-de-usuario/cadastro';
-import { RecuperacaoDeConta } from '../recuperacaoDeConta/index';
 import { InsercaoDeNovaSenha } from '../login-cadastro-de-usuario/insercaoDeNovaSenha';
 import LandingPageHome from './LandingPageHome';
+import { RecuperacaoDeConta } from '../../pages/recuperacaoDeConta';
 
 
 function ConteudoHome() {

@@ -1,9 +1,9 @@
 import { FormEvent, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/api";
+import { validacaoEmail } from "../../lib/validacaoDeEmail";
 import CatImage from "../assets/catastronaut.svg";
-import { validacaoEmail } from "../lib/validacaoDeEmail";
-import { CabecalhoHome } from "../componentes/cabecalhoHome";
+import { CabecalhoHome } from "../cabecalhoHome";
 
 export function Cadastro() {
   const [nome, setNome] = useState("");
@@ -28,11 +28,7 @@ export function Cadastro() {
         email,
         senha,
       })
-<<<<<<< HEAD:adocao-web/src/componentes/login-cadastro-de-usuario/cadastro.tsx
-      .then(() => navigate("/cadastro/concluido"))
-=======
       .then(() => navigate("/login"))
->>>>>>> origin/main:adocao-web/src/pages/cadastro.tsx
       .catch((err) => console.log(err));
 
     setComunicao(false);

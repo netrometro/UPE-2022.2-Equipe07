@@ -33,5 +33,4 @@ export function CabecalhoHome() {
             >Parceiros</button>
         </div>
     );
-  }
-  
+}

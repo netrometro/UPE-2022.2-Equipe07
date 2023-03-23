@@ -5,7 +5,7 @@ import { api } from "../../lib/api";
 
 export function InsercaoDeCodigo() {
     const [codigo, setCodigo] = useState("");
-    const [comunicao, setComunicao] = useState(false);
+    const [, setComunicao] = useState(false);
     const navigate = useNavigate();
 
     async function conectar(event: FormEvent) {

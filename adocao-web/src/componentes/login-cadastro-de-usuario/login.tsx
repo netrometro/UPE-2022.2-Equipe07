@@ -2,9 +2,9 @@ import Cookies from "js-cookie";
 import { FormEvent, SetStateAction, useState } from "react";
 import CatImage from "../assets/catastronaut.svg";
 import { useNavigate } from "react-router-dom";
-import { validacaoEmail } from "../lib/validacaoDeEmail";
-import { api } from "../lib/api";
-import { CabecalhoHome } from "../componentes/cabecalhoHome";
+import { api } from "../../lib/api";
+import { CabecalhoHome } from "../cabecalhoHome";
+import { validacaoEmail } from "../../lib/validacaoDeEmail";
 
 export function Login() {
   const [email, setEmail] = useState("");
