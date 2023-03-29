@@ -5,7 +5,13 @@ import Cookies from "js-cookie";
 
 export function CabecalhoHome() {
 
+    const [token, setToken] = useState(Cookies.get("token"));
     const navigate =  useNavigate();
+
+    function logout() {
+        Cookies.remove("token")
+        setToken(undefined)
+    }
 
     return (
         <div className="flex items-center h-[10vh]">
@@ -16,7 +22,7 @@ export function CabecalhoHome() {
             className="m-10"
             onClick={() => {navigate("/")}}
             >Home</button>
-            {Cookies.get("token") == null ?<button
+            {token == null ?<button
             onClick={() => {navigate("/login")}}
             >Login</button> :
             <button
@@ -31,6 +37,14 @@ export function CabecalhoHome() {
             className="m-10"
             onClick={() => {navigate("/parceiros")}}
             >Parceiros</button>
+            <div>
+            {token?
+            <button
+            className="m10"
+            type="button"
+            onClick={() => logout()}
+            >Logout</button>: ""}
+            </div>
         </div>
     );
   }
