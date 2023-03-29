@@ -29,12 +29,12 @@ export function Parceiros() {
         <CabecalhoHome />
         <div className="list-item justify-center w-screen min-h-[90vh] h-[90%] bg-[url('./assets/bg2.jpg')] bg-no-repeat bg-center bg-cover">
         {filiados.map((filiado: FiliadoProps) => {return (
-        <Popover className="flex bg-gray-300 bottom-4 top-4 p-4 rounded-xl max-w-[788px]">
-                <Popover.Button>
+        <div className="flex bg-gray-300 bottom-4 top-4 p-4 rounded-xl max-w-[788px]">
+                <div className="w-36">
                     <img className="w-24 rounded-lg" src={filiado.imageURL} alt={filiado.nome} />
                     <h3>{filiado.nome}</h3>
-                </Popover.Button>
-                <Popover.Panel className=" w-96">
+                </div>
+                <div className=" w-96">
                 <div>
                     <span>{filiado.cnpj}</span>
                     <p>{filiado.descricao}</p>
@@ -44,8 +44,8 @@ export function Parceiros() {
                         <a href={filiado.pagina} target="_blank" ><Browser size={32} /></a>
                     </div>
                 </div>
-                </Popover.Panel>
-        </Popover>
+                </div>
+        </div>
         )})
         
         }
