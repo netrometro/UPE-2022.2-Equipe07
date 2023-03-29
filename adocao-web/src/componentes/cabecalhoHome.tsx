@@ -40,7 +40,7 @@ export function CabecalhoHome() {
             <div>
             {token?
             <button
-            className="m10"
+            className="m10 p-1 rounded-lg bg-red-600 hover:bg-red-700"
             type="button"
             onClick={() => logout()}
             >Logout</button>: ""}
