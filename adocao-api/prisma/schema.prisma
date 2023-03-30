@@ -18,8 +18,28 @@ model Usuario {
   estado        STATUS
   recuperacoes  Recuperacao[]
   posts         Post[]
+  animaisFav    UsuarioAnimalFav[]
 
   @@map("usuarios")
+}
+
+model Animal {
+  id          Int       @id @default(autoincrement())
+  imgURL      String
+  nome        String
+  usuariosFav UsuarioAnimalFav[]
+
+  @@map("animais")
+}
+
+model UsuarioAnimalFav {
+  animal Animal @relation(fields: [animalId], references: [id])
+  animalId Int
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId String
+  
+  @@id([animalId, usuarioId])
+  @@map("UsuarioAnimalFavoritados")
 }
 
 model Recuperacao {
