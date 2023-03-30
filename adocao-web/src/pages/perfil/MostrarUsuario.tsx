@@ -1,3 +1,5 @@
+import { AnimaisFavoritos } from "./animaisFavoritos";
+
 interface UsuarioProps {
   nome: string;
   nomeDeUsuario: string;
@@ -34,6 +36,7 @@ export function MostrarUsuario({
             onClick={() => setAtualizar(true)}
             className="bg-orange-500 text-gray-800 rounded-md w-40 my-4 grid place-content-center hover:bg-orange-600 focus:border-gray-900 transition-colors disabled:bg-orange-500 disabled:opacity-80 font-medium"
           >Atualizar</button>
+      <AnimaisFavoritos lista={[{id: 12, imgURL: "https://http.cat/102", nome: "Aroudo"}]} />
       </div>
     </div>
   );
