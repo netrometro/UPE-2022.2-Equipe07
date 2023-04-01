@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AnimalControle } from "./casosDeUso/animal/AnimalControle";
 import { AutenticacaoControle } from "./casosDeUso/autenticacao/AutenticacaoControle";
 import { ParceirosControle } from "./casosDeUso/parceiro/parceirosControle";
 import PostControle from "./casosDeUso/post/PostControle";
@@ -26,5 +27,13 @@ rotas.get("/post/:postId", postControle.pegarTudo);
 
 const parceirosControle = new ParceirosControle();
 rotas.get("/parceiros", parceirosControle.listarParceiros);
+
+const animalControle = new AnimalControle();
+rotas.get("/animais", animalControle.listarAnimais)
+rotas.get("/animais/:id", animalControle.buscarAnimal)
+rotas.get("/perfil/animais", ValidarAutenticacao, animalControle.buscarAnimaisFav)
+
+rotas.put("/perfil/animal/:animalId", ValidarAutenticacao, animalControle.adicionarAnimalFavoritos);
+rotas.delete("/perfil/animal/:animalId", ValidarAutenticacao, animalControle.removerAnimalFavoritos);
 
 export{ rotas };
