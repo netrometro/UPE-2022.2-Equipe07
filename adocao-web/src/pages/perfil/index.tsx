@@ -30,7 +30,7 @@ export function Perfil() {
         setNomeDeUsuario(usuario.data.nomeDeUsuario);
         setDescricao(usuario.data.descricao);
         setCriacao(new Date(usuario.data.criacao));
-      })
+      }) 
   }, []);
 
 

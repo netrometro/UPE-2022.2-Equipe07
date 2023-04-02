@@ -1,4 +1,3 @@
-import { Popover } from "@headlessui/react";
 import { useState, useEffect } from "react"
 import { CabecalhoHome } from "../componentes/cabecalhoHome";
 import {Browser, MapPinLine, WhatsappLogo} from "phosphor-react"
