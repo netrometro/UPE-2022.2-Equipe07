@@ -91,10 +91,19 @@ model Dica {
   imgURL      String?
   titulo      String
   autor       String
+  criacao     DateTime
   texto       String
   comentarios ComentarioDica[]
+  categoria   CategoriaEnum
 
   @@map("dicas")
+}
+
+enum CategoriaEnum {
+  CUIDADO
+  NUTRICAO
+  TREIMANETO
+  EXERCICIO
 }
 
 model ComentarioDica {
@@ -104,4 +113,6 @@ model ComentarioDica {
   dicaId    Int
   usuario   Usuario @relation(fields: [usuarioId], references: [id])
   usuarioId String
+
+  @@map("ComtentariosDica")
 }
