@@ -11,20 +11,14 @@ export class ComentarioDicaCasosDeUso {
         const comentarios = await client.comentarioDica.findMany({
             where: {
                 dicaId: id
+            },
+            include: {
+                usuario: true,
             }
         });
 
-        var comentariosUsuarios: ComentariosUsuarios[] =  [];
 
-        comentarios.map(async comentario => {
-            const usuario = await client.usuario.findFirst({
-                where: {
-                    id: comentario.usuarioId
-                }
-            });
-            comentariosUsuarios.concat([{comentario, usuario}]);
-        })
-
-        return comentariosUsuarios;
+        return comentarios;
     }
+
 }

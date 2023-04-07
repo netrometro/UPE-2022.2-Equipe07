@@ -6,6 +6,7 @@ import PostControle from "./casosDeUso/post/PostControle";
 import { UsuarioControle } from "./casosDeUso/usuario/UsuarioControle";
 import { ValidarAutenticacao } from "./intermediarios/ValidarAutenticacao";
 import { DicaControle } from "./casosDeUso/dica/DicaControle";
+import { ComentarioDicaControle } from "./casosDeUso/comentarioDica/ComentarioDicaControle";
 
 const rotas = Router();
 
@@ -40,5 +41,8 @@ rotas.delete("/perfil/animal/:animalId", ValidarAutenticacao, animalControle.rem
 const dicaControle = new DicaControle();
 rotas.get("/dicas", dicaControle.listarDicas);
 rotas.get("/dicas/:categoria", dicaControle.filtrarDicasCategoria);
+
+const comentarioDicaControle = new ComentarioDicaControle;
+rotas.get("/comentarios/dicas/:id", comentarioDicaControle.buscarComentariosDicas);
 
 export{ rotas };
