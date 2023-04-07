@@ -5,6 +5,7 @@ import { ParceirosControle } from "./casosDeUso/parceiro/parceirosControle";
 import PostControle from "./casosDeUso/post/PostControle";
 import { UsuarioControle } from "./casosDeUso/usuario/UsuarioControle";
 import { ValidarAutenticacao } from "./intermediarios/ValidarAutenticacao";
+import { DicaControle } from "./casosDeUso/dica/DicaControle";
 
 const rotas = Router();
 
@@ -35,5 +36,9 @@ rotas.get("/perfil/animais", ValidarAutenticacao, animalControle.buscarAnimaisFa
 
 rotas.put("/perfil/animal/:animalId", ValidarAutenticacao, animalControle.adicionarAnimalFavoritos);
 rotas.delete("/perfil/animal/:animalId", ValidarAutenticacao, animalControle.removerAnimalFavoritos);
+
+const dicaControle = new DicaControle();
+rotas.get("/dicas", dicaControle.listarDicas);
+rotas.get("/dicas/:categoria", dicaControle.filtrarDicasCategoria);
 
 export{ rotas };

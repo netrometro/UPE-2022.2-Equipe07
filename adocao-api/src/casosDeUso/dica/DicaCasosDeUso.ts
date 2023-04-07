@@ -13,12 +13,16 @@ export class DicaCasosDeUso {
         switch (categoria) {
         case "CUIDADO":
             categoriaEnum = CategoriaEnum.CUIDADO
+            break
         case "EXERCICIO":
             categoriaEnum = CategoriaEnum.EXERCICIO
+            break
         case "NUTRICAO":
             categoriaEnum = CategoriaEnum.NUTRICAO
+            break
         case "TREINAMENTO":
             categoriaEnum = CategoriaEnum.TREINAMENTO
+            break
     }
         const dicas = await client.dica.findMany({
             where: {
