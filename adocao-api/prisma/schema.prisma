@@ -8,23 +8,24 @@ datasource db {
 }
 
 model Usuario {
-  id            String        @id @default(uuid())
-  nome          String
-  nomeDeUsuario String        @unique
-  descricao     String?
-  email         String        @unique
-  senha         String
-  criacao       DateTime
-  estado        STATUS
-  recuperacoes  Recuperacao[]
-  posts         Post[]
-  animaisFav    UsuarioAnimalFav[]
+  id               String             @id @default(uuid())
+  nome             String
+  nomeDeUsuario    String             @unique
+  descricao        String?
+  email            String             @unique
+  senha            String
+  criacao          DateTime
+  estado           STATUS
+  recuperacoes     Recuperacao[]
+  posts            Post[]
+  animaisFav       UsuarioAnimalFav[]
+  comentariosDicas ComentarioDica[]
 
   @@map("usuarios")
 }
 
 model Animal {
-  id          Int       @id @default(autoincrement())
+  id          Int                @id @default(autoincrement())
   imgURL      String
   nome        String
   usuariosFav UsuarioAnimalFav[]
@@ -33,11 +34,11 @@ model Animal {
 }
 
 model UsuarioAnimalFav {
-  animal Animal @relation(fields: [animalId], references: [id])
-  animalId Int
-  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  animal    Animal  @relation(fields: [animalId], references: [id])
+  animalId  Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
   usuarioId String
-  
+
   @@id([animalId, usuarioId])
   @@map("UsuarioAnimalFavoritados")
 }
@@ -83,4 +84,24 @@ model Parceiro {
   pagina    String
 
   @@map("parceiros")
+}
+
+model Dica {
+  id          Int              @id @default(autoincrement())
+  imgURL      String?
+  titulo      String
+  autor       String
+  texto       String
+  comentarios ComentarioDica[]
+
+  @@map("dicas")
+}
+
+model ComentarioDica {
+  id        Int     @id @default(autoincrement())
+  texto     String
+  dica      Dica    @relation(fields: [dicaId], references: [id])
+  dicaId    Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId String
 }
