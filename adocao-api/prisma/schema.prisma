@@ -92,7 +92,7 @@ model Dica {
   titulo      String
   autor       String
   criacao     DateTime
-  texto       String
+  texto       String           @db.LongText
   comentarios ComentarioDica[]
   categoria   CategoriaEnum
 
