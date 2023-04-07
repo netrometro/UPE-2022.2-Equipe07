@@ -102,7 +102,7 @@ model Dica {
 enum CategoriaEnum {
   CUIDADO
   NUTRICAO
-  TREIMANETO
+  TREINAMENTO
   EXERCICIO
 }
 
