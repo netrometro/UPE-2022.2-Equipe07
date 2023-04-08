@@ -8,6 +8,16 @@ export class DicaCasosDeUso {
         return dicas;
     }
 
+    async buscarDica(id: number) {
+        const dica = await client.dica.findFirst({
+            where: {
+                id
+            }
+        });
+
+        return dica;
+    }
+
     async filtarDicasCategoria(categoria: string) {
         var categoriaEnum;
         switch (categoria) {
