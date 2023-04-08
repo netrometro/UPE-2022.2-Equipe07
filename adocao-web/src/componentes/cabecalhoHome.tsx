@@ -35,6 +35,10 @@ export function CabecalhoHome() {
             >Cadastro</button>
             <button
             className="m-10"
+            onClick={() => {navigate("/forum")}}
+            >Forum</button>
+            <button
+            className="m-10"
             onClick={() => {navigate("/parceiros")}}
             >Parceiros</button>
             <div>
