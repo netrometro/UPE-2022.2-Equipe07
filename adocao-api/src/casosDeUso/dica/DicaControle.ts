@@ -9,6 +9,14 @@ export class DicaControle {
         return response.json(dicas);
     }
 
+    async buscarDica(request: Request, response: Response) {
+        const { id } = request.params;
+        const dicaCasosDeUso = new DicaCasosDeUso();
+        const dica = await dicaCasosDeUso.buscarDica(Number.parseInt(id));
+
+        return response.json(dica);
+    }
+
     async filtrarDicasCategoria(request: Request, response: Response) {
         const { categoria } = request.params;
         const dicaCasosDeUso = new DicaCasosDeUso();
