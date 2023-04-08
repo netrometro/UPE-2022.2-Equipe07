@@ -40,6 +40,7 @@ rotas.delete("/perfil/animal/:animalId", ValidarAutenticacao, animalControle.rem
 
 const dicaControle = new DicaControle();
 rotas.get("/dicas", dicaControle.listarDicas);
+rotas.get("/dica/:id", dicaControle.buscarDica);
 rotas.get("/dicas/:categoria", dicaControle.filtrarDicasCategoria);
 
 const comentarioDicaControle = new ComentarioDicaControle;
