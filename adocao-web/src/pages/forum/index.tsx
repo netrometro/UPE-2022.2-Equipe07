@@ -1,4 +1,5 @@
 import { CabecalhoHome } from "../../componentes/cabecalhoHome"
+import { DicaForum } from "../../componentes/dicaForum"
 
 export function Forum() {
 
@@ -15,17 +16,15 @@ export function Forum() {
         <div>
             <CabecalhoHome />
         <div className=" items-center bg-[url('./assets/bg.jpg')] bg-no-repeat bg-center bg-cover">
+            <select className="ml-20 border rounded-xl p-1 mt-3" name="filtro" id="1" >
+                <option value="">Todos</option>
+                <option value="CUIDADO">CUIDADO</option>
+                <option value="NUTRICAO">NUTRICAO</option>
+                <option value="TREINAMENTO">TREINAMENTO</option>
+                <option value="EXERCICIO">EXERCICIO</option>
+            </select>
             <section key={dd.id} className="bg-slate-100/[0.6] p-10 rounded-xl mx-20 m-2.5">
-            <h1 className="text-3xl font-semibold">{dd.titulo}</h1>
-            <div className="flex ml-3">
-                <h2 className="m-1 p-1 text-orange-600 font-bold">{dd.categoria}</h2>
-                <h2 className="m-1 p-1 text-green-500 font-black">{dd.autor}</h2>
-                <span className="m-1 p-1 font-bold">{dd.criacao}</span>
-            </div>
-            <img className="h-96 my-3" src={dd.imgURL} alt="simbolica"/>
-            <p className="text-base">
-                {dd.texto}
-            </p>
+            <DicaForum dica={dd} />
             <button
             type="button"
             className="bg-orange-500 text-gray-800 rounded-md p-2 my-4 grid place-content-center hover:bg-orange-600 focus:border-gray-900 transition-colors disabled:bg-orange-500 disabled:opacity-80 font-medium"
